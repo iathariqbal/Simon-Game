@@ -2,7 +2,6 @@ body {
   text-align: center;
   background-color: #011F3F;
 }
-/* Style for the heading of level */
 #level-title {
   font-family: 'Press Start 2P', cursive;
   font-size: 3rem;
@@ -16,7 +15,6 @@ body {
   margin: auto;
 
 }
-/* style for the buttons  */
 .btn {
   margin: 25px;
   display: inline-block;
@@ -25,7 +23,6 @@ body {
   border: 10px solid black;
   border-radius: 20%;
 }
-/* the styling for the game-over trigger */
 .game-over {
   background-color: red;
   opacity: 0.8;
@@ -46,7 +43,6 @@ body {
 .yellow {
   background-color: yellow;
 }
-/* animation for when button pressed */
 .pressed {
   box-shadow: 0 0 20px white;
   background-color: grey;
