@@ -1,4 +1,4 @@
-var colorSequence = []; //array for storing the sequence of buttons to be pressed
+var colorSequence = [];
 var clickEnabled = true;
 var level = 0;
 var currentElement = 0;
@@ -6,11 +6,11 @@ var gameOver = false;
 
 function gameStart() {
   currentElement = 0;
-  level++; //level increments
+  level++;
   $("h1").text("Level " + level);
   var random = Math.floor(Math.random() * 4);
   clickEnabled = false;
-  //this switch checks the random generated and every number has a tile assigned which is pushed to the colorSequence
+  
   switch (random) {
     case 0:
       colorSequence.push("blue");
@@ -34,14 +34,12 @@ function gameStart() {
       break;
   }
 }
-//this function adds the sound according to the button which is the argument taken in
 function addSound(btn) {
   var audio = new Audio("sounds/" + btn + ".mp3");
   audio.play();
 }
-//any key pressed will start the game
 $("body").keydown(function() {
-  if (clickEnabled === true) { //this is a boolean to ensure that game starts once and not everytime there is a keypress
+  if (clickEnabled === true) { 
     gameStart();
   }
   if (gameOver === true) {
@@ -54,11 +52,9 @@ $("body").keydown(function() {
     console.log(colorSequence);
   }
 });
-//adds the click event to all the four buttons
 $(".btn").click(function(event) {
 
-  // the currentElement shows the button to be pressed next
-  if (this.id !== colorSequence[currentElement]) { //if this is not the button that was to be pressed
+  if (this.id !== colorSequence[currentElement]) {
     addSound("wrong");
     clickEnabled = false;
     gameOver = true;
@@ -67,22 +63,19 @@ $(".btn").click(function(event) {
     setTimeout(function() {
       $("body").removeClass("game-over");
     }, 100)
-  } else if (this.id === colorSequence[currentElement]) { //if this was the button to be pressed
+  } else if (this.id === colorSequence[currentElement]) {
     addSound(this.id);
     animateButtons(this.id);
     currentElement++;
-    if (colorSequence.length === currentElement) { //whenever the currentElement reaches the last element then start a new level
+    if (colorSequence.length === currentElement) {
       setTimeout(function() {
         gameStart(); //new level starts
       }, 1000);
 
     }
   }
-
-
 });
 
-//adds the pressed animation to the buttons
 function animateButtons(color) {
   $("." + color).addClass("pressed");
 
